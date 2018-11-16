@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PowerStatusBrowser.Properties
+namespace Autoshutdown.Properties
 {
 
 
