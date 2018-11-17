@@ -16,9 +16,13 @@ namespace AutoShutdown
     {
         private MenuStrip menuStrip1;
         private PictureBox pictureBox1;
+        private Logger logger;
+        private bool Offline;
 
         public Form1()
         {
+            logger = new Logger(String.Format("{0}.log", System.Reflection.Assembly.GetEntryAssembly().Location));
+            logger.Info("Starting AutoShutdown.","");
             InitializeComponent();
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged); //https://docs.microsoft.com/en-us/dotnet/api/microsoft.win32.systemevents.powermodechanged
             this.ResumeLayout(false);
@@ -28,6 +32,11 @@ namespace AutoShutdown
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
             ShowPowerStatus();
+            if (Offline)
+            {
+                logger.Info("Shutting down Windows.");
+                //Utility.Shutdown();
+            }
         }
         /// <summary>
         /// Determines and displays the value of the PowerLineStatus property.
@@ -46,17 +55,18 @@ namespace AutoShutdown
                     prop = pi[i];
                     break;
                 }
-
+            
             object propval = prop.GetValue(SystemInformation.PowerStatus, null);
+            logger.Info(String.Format("PowerLineStatus is set to {0}", propval.ToString()));
             if (propval.ToString() == "Offline")
-            {
+            { 
+                Offline = true;
                 // Show shutdown image
                 pictureBox1.Image = global::AutoShutdown.Properties.Resources.Power___Shut_Down_128x128;
-                Thread.Sleep(5000);
-                Utility.Shutdown();         
             }
             else
             {
+                Offline = false;
                 // Show power on image
                 pictureBox1.Image = global::AutoShutdown.Properties.Resources.power_128;
             }

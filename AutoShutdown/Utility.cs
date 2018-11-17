@@ -8,7 +8,7 @@ using System.Management;
 namespace AutoShutdown
 {
     static class Utility
-    {
+    {   
         public static void Shutdown()
         {
             ManagementBaseObject mboShutdown = null;
