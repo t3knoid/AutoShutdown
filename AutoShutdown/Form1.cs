@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -48,9 +49,17 @@ namespace AutoShutdown
 
             object propval = prop.GetValue(SystemInformation.PowerStatus, null);
             if (propval.ToString() == "Offline")
+            {
+                // Show shutdown image
                 pictureBox1.Image = global::AutoShutdown.Properties.Resources.Power___Shut_Down_128x128;
+                Thread.Sleep(5000);
+                Utility.Shutdown();         
+            }
             else
+            {
+                // Show power on image
                 pictureBox1.Image = global::AutoShutdown.Properties.Resources.power_128;
+            }
         }
         [STAThread]
         static void Main()
