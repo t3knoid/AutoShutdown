@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0312AC45-2618-4D54-98E0-73F2844A79CB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PowerStatusBrowser</RootNamespace>
-    <AssemblyName>PowerStatusBrowser</AssemblyName>
+    <RootNamespace>AutoShutdown</RootNamespace>
+    <AssemblyName>AutoShutdown</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,16 +56,16 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -75,5 +75,54 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 96x96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Power - Shut Down 256x256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-16.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

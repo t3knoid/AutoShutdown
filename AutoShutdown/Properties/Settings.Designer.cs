@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Autoshutdown.Properties
+namespace AutoShutdown.Properties
 {
 
 

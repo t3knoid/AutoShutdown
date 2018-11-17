@@ -6,14 +6,15 @@ using System.Reflection;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace Autoshutdown
+namespace AutoShutdown
 {
     /// <summary>
     /// http://www.blackwasp.co.uk/DetectPowerEvents.aspx
     /// </summary>
     public class Form1 : System.Windows.Forms.Form
     {
-        private TextBox textBox1;
+        private MenuStrip menuStrip1;
+        private PictureBox pictureBox1;
 
         public Form1()
         {
@@ -46,7 +47,10 @@ namespace Autoshutdown
                 }
 
             object propval = prop.GetValue(SystemInformation.PowerStatus, null);
-            textBox1.Text = propval.ToString();
+            if (propval.ToString() == "Offline")
+                pictureBox1.Image = global::AutoShutdown.Properties.Resources.Power___Shut_Down_128x128;
+            else
+                pictureBox1.Image = global::AutoShutdown.Properties.Resources.power_128;
         }
         [STAThread]
         static void Main()
@@ -56,26 +60,41 @@ namespace Autoshutdown
 
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Icon = global::AutoShutdown.Properties.Resources.Icon1;
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // menuStrip1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(12, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 13);
-            this.textBox1.TabIndex = 0;
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(167, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // pictureBox1
+            // 
+            //this.pictureBox1.Image = global::AutoShutdown.Properties.Resources.Power___Shut_Down_128x128;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 129);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(124, 32);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(167, 186);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }
