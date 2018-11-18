@@ -92,11 +92,6 @@ namespace AutoShutdown
             this.notifyIcon1.Text = status;
             notifyIcon1.ShowBalloonTip(500);
         }
-        [STAThread]
-        static void Main()
-        {
-            Application.Run(new Form1());
-        }
 
         private void InitializeComponent()
         {
@@ -172,11 +167,13 @@ namespace AutoShutdown
             this.ClientSize = new System.Drawing.Size(167, 186);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = global::AutoShutdown.Properties.Resources.Icon1;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -185,11 +182,16 @@ namespace AutoShutdown
 
         }
 
-        private void minimizeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MinimizeToTray()
         {
             notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(500);
+            this.ShowInTaskbar = false;
             this.Hide();
+        }
+        private void minimizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MinimizeToTray();
+            notifyIcon1.ShowBalloonTip(500);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,6 +208,8 @@ namespace AutoShutdown
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
+            this.ShowInTaskbar = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Show();
         }
     }
