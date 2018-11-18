@@ -40,7 +40,7 @@ namespace AutoShutdown
             if (Offline)
             {
                 logger.Info("Shutting down Windows.");
-                //Utility.Shutdown();
+                Utility.Shutdown();
             }
         }
         /// <summary>
